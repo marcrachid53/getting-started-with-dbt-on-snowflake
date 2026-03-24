@@ -9,21 +9,21 @@ CREATE OR ALTER TASK run_tasty_bytes_subset
   WAREHOUSE = tasty_bytes_dbt_wh
   SCHEDULE = '2 MINUTES'
   AS
-      execute dbt project my_dbt_project_object_gh_action args='run --select raw_customers stg_customers customers --target prod';
+      execute dbt project TASTY_BYTES_DBT_OBJECT_GH_ACTION args='run --select RAW_CUSTOMER_CUSTOMER_LOYALTY --target prod';
 
 -- Kick off a complete run of the full project
 CREATE OR ALTER TASK run_tasty_bytes_full
   WAREHOUSE = tasty_bytes_dbt_wh
   AFTER run_tasty_bytes_subset
   AS
-      execute dbt project my_dbt_project_object_gh_action args='run --target prod';
+      execute dbt project TASTY_BYTES_DBT_OBJECT_GH_ACTION args='run --target prod';
 
 -- Run any data quality tests you've defined
 CREATE OR ALTER TASK test_tasty_bytes
   WAREHOUSE = tasty_bytes_dbt_wh
   AFTER run_tasty_bytes_full
   AS
-      execute dbt project my_dbt_project_object_gh_action args='test --target prod';
+      execute dbt project TASTY_BYTES_DBT_OBJECT_GH_ACTION args='test --target prod';
 
 -- When a task is first created or if an existing task it paused, it MUST BE RESUMED to be activated
 -- The tasks must be enabled in REVERSE ORDER from child to root
