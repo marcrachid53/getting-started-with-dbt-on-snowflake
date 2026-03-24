@@ -18,8 +18,6 @@ SELECT
     cl.first_name,
     cl.last_name,
     cl.e_mail,
-    cl.phone_number,
-    cl.children_count,
     cl.gender,
     cl.marital_status,
     od.menu_item_id,
