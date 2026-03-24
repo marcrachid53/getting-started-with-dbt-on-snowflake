@@ -29,9 +29,9 @@ SELECT
     oh.order_tax_amount,
     oh.order_discount_amount,
     oh.order_total
-FROM {{ ref('raw_pos_order_detail') }} od
+--FROM {{ ref('raw_pos_order_detail') }} od
 JOIN {{ ref('raw_pos_order_header') }} oh
-    ON od.order_id = oh.order_id
+   -- ON od.order_id = oh.order_id
 JOIN {{ ref('raw_pos_truck') }} t
     ON oh.truck_id = t.truck_id
 JOIN {{ ref('raw_pos_menu') }} m
